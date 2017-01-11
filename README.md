@@ -4,8 +4,8 @@
 必须导包：okhttp3, Gson</br>
 权限：网络访问权限</br>
 
-调用方式:[依据链式编程]</br>
-    //get请求和post请求方法类似</br>
+调用方式:[依据链式编程]//get请求和post请求方法类似</br>
+
     OKHttpUtils.newBuilder().url(url).get().build().enqueue(new OKHttpCallBack<UserBean>() {
          /**
           * 获取数据成功，配合Gson解析成javabean
@@ -16,7 +16,8 @@
           */
           @Override
           public void onSuccess(UserBean userBean) {
-
+                String code = userBean.getCode();
+                ...
           }
 
          /**
@@ -26,7 +27,7 @@
           */
           @Override
           public void onError(int code) {
-
+                
           }
 
          /**
@@ -47,6 +48,6 @@ OKHttpManager.java  处理网络访问</br>
 OKHttpUtils.java  OKHttp工具类</br>
 RequestParam.java  用于get请求，post请求添加参数</br>
 UserBean.java  模板Bean,只需要把下载的数据用gson解析成javabean，然后在返回成功的callback中</br>
-               可以直接获取到这个javabean对象，可以用来直接获取各种值。【此方法为同步】</br>
+               可以直接获取到这个javabean对象，可以用来直接获取各种值。【此方法为同步】
                
 ## 不足之处欢迎指正，谢谢！本人联系方式：QQ821842708
